@@ -1,4 +1,4 @@
 # dotfiles
 my macOS dotfiles
 
-##Pictures coming soon
+## Pictures coming soon
