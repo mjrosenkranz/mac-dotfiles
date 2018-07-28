@@ -1,0 +1,21 @@
+# most importatnt command (reload)
+cmd + shift - r : skhd -e "reload"
+# new terminal
+cmd - return : osascript -e 'tell application "iTerm" to activate' -e 'tell application "System Events" to tell process "iTerm" to keystroke "n" using command down'
+
+#focus window
+cmd - h : chunkc tiling::window --focus west
+cmd - j : chunkc tiling::window --focus south
+cmd - k : chunkc tiling::window --focus north
+cmd - l : chunkc tiling::window --focus east
+
+#move current window
+cmd + shift - h : chunkc tiling::window --swap west
+cmd + shift - j : chunkc tiling::window --swap south
+cmd + shift - k : chunkc tiling::window --swap north
+cmd + shift - l : chunkc tiling::window --swap east
+
+#adjust gap size
+cmd + shift - v : chunkc tiling::desktop --gap inc 10
+cmd + shift - c : chunkc tiling::desktop --gap dec 10
+
