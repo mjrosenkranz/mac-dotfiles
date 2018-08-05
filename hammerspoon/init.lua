@@ -2,7 +2,7 @@ hyper = {"cmd", "alt", "ctrl"}
 
 --outer, upper, and window borders
 o_border = 30
-u_border = 30
+u_border = 0
 w_border = 15
 
 --reload config
@@ -219,3 +219,19 @@ end)
 
 --move window to edge of border
 --maybe make widnow location and size switching
+--make centering function
+
+--window filter test
+local wf = hs.window.filter
+wf_finder = wf.new(false):setAppFilter('Finder')
+wf_finder:subscribe(wf.windowCreated, function()
+	local win = hs.window.focusedWindow()
+	local f = win:frame()
+	local screen = win:screen()
+	local max = screen:frame()
+
+	f.w = max.w/2 - (2 * o_border + w_border)
+	f.h = 500
+	f.x = max.w/2 - f.w/2
+	win:setFrame(f)
+end)
