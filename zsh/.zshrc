@@ -13,5 +13,5 @@ alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias sourcez="source ~/.zshrc"
 
 #path additions
-PATH="~/dotfiles/scripts/:$PATH"
+PATH="$HOME/dotfiles/scripts/:$PATH"
 export PATH
