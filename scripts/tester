@@ -1,0 +1,23 @@
+#!/bin/bash
+name=""
+while getopts ":b:s:t:i:" opt; do
+	case "$opt" in
+		b) echo "-b param: $OPTARG"
+			;;
+		s) echo "-s param: $OPTARG"
+			;;
+		t) echo "-t param: $OPTARG"
+			;;
+		i) name="$OPTARG"
+			;;
+		:) echo "Option -$OPTARG requires am argument"
+			exit 0;
+			;;
+    	esac
+done
+
+shift $((OPTIND-1))
+
+#[ "${1:-}" = "--" ] && shift
+path="$HOME/Pictures/Bgs/$name"
+echo $path

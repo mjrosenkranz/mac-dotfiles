@@ -5,6 +5,9 @@ o_border = 30
 u_border = 0
 w_border = 15
 
+--movement and resizing amount
+move = 40
+
 --reload config
 hs.hotkey.bind({"cmd", "shift"}, "R", function()
 	hs.reload()
@@ -37,7 +40,7 @@ hs.hotkey.bind({"cmd", "shift"}, "H", function()
 	local max = screen:frame()
 
 	if f.x > max.x + o_border then
-  		f.x = f.x - 20
+  		f.x = f.x - move
 	else
 		f.x = max.x + o_border
 	end
@@ -50,7 +53,7 @@ hs.hotkey.bind({"cmd", "shift"}, "L", function()
 	local max = screen:frame()
 
 	if f.x < max.w - (o_border + f.w) then
-  		f.x = f.x + 20
+  		f.x = f.x + move
 	else
 		f.x = max.w - (o_border + f.w)
 	end
@@ -63,7 +66,7 @@ hs.hotkey.bind({"cmd", "shift"}, "K", function()
 	local max = screen:frame()
 	
 	if f.y > max.y + o_border + u_border then
-  		f.y = f.y - 20
+  		f.y = f.y - move
 	else
 		f.y = max.y + o_border + u_border
 	end
@@ -76,9 +79,9 @@ hs.hotkey.bind({"cmd", "shift"}, "J", function()
 	local max = screen:frame()
 
 	if f.y < max.h - (o_border + f.h) then
-  		f.y = f.y + 20
+  		f.y = f.y + move
 	else
-		f.y = max.h - (o_border + f.h)
+		f.y = max.h - (o_border + f.h) + 20
 	end
   	win:setFrame(f)
 end)

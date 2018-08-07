@@ -1,68 +1,89 @@
 #!/usr/bin/env bash
-path="$HOME/Pictures/Bgs/$1"
-wal -q -i $path
+#commanline options
+OPTIND=1
+cp1=1
+cp2=5
+cp3=7
+path=""
+name=""
+while getopts "b:s:t:i:" opt; do
+	case "$opt" in
+		b) cp1=$OPTARG
+			;;
+		s)  cp2=$OPTARG
+			;;
+		t)  cp3=$OPTARG
+			;;
+		i) name="$OPTARG"
+			;;
+		:) echo "Option -$OPTARG requires am argument"
+			exit 0;
+			;;
+    	esac
+done
 
-hc1="$(sed '1q;d' ~/.cache/wal/colors)"
-hc2="$(sed '2q;d' ~/.cache/wal/colors | cut -c 2-)"
-hc3="$(sed '5q;d' ~/.cache/wal/colors | cut -c 2-)"
-echo "colors generated"
+shift $((OPTIND-1))
 
-dir=${1%.*}
-if [ ! -f $HOME/dotfiles/chrome/themes/$dir.crx ]; then
-	mkdir $HOME/dotfiles/chrome/themes/$dir
-	cd $HOME/dotfiles/chrome/themes/$dir
-	echo "directory made"
-	mkdir images
-	cd images
-	convert xc:"$hc1"[20x1920!] theme_frame.png
-	convert xc:"$hc1"[20x120!] theme_tab_background.png
-	convert xc:"$hc1"[20x120!] theme_toolbar.png
-	echo "images generated"
-	hc1="$(sed '1q;d' ~/.cache/wal/colors | cut -c 2-)"
-	c1="$(bash hexrgb $hc1)"
-	c2="$(bash hexrgb $hc2)"
-	c3="$(bash hexrgb $hc3)"
-	cd ..
-	touch manifest.json
-	echo "{
-		\"name\":\"$dir\",
-		\"version\":\"1.0\",
-		\"description\":\"Theme based off of Wal\",
-		\"manifest_version\":2,
-		\"theme\":{
-			\"images\":{
-				\"theme_frame\":\"images/theme_frame.png\",
-				\"theme_toolbar\":\"images\/theme_toolbar.png\",
-				\"theme_tab_background\":\"images\/theme_tab_background.png\"
-			},
-			\"colors\":{
-				\"frame\":[$c1],
-				\"toolbar\":[$c1],
-				\"tab_text\":[$c2],
-				\"tab_background_text\":[$c3],
-				\"bookmark_text\":[$c3],
-				\"ntp_background\":[$c1],
-				\"ntp_text\":[$c3],
-				\"button_background\":[$c1,0.9]
-			},
-			\"tints\":{
-				\"buttons\":[0.11,0.82,0.83]
-			},
-			\"properties\":{
-				\"ntp_background_alignment\":\"bottom\",
-				\"ntp_background_repeat\":\"no-repeat\"
-			}
+[ "${1:-}" = "--" ] && shift
+path="$HOME/Pictures/Bgs/$name"
+[ -f "$path" ] && wal -i $path || echo "file $path does not exist"
+hc1="$(sed -n "$cp1 p" ~/.cache/wal/colors)"
+hc2="$(sed -n "$cp2 p" ~/.cache/wal/colors | cut -c 2-)"
+hc3="$(sed -n "$cp3 p" ~/.cache/wal/colors | cut -c 2-)"
+
+dir=${name%.*}
+mkdir $HOME/dotfiles/chrome/themes/$dir
+cd $HOME/dotfiles/chrome/themes/$dir
+echo "directory made"
+mkdir images
+cd images
+convert xc:"$hc1"[20x1920!] theme_frame.png
+convert xc:"$hc1"[20x120!] theme_tab_background.png
+convert xc:"$hc1"[20x120!] theme_toolbar.png
+echo "images generated"
+hc1="$(sed '1q;d' ~/.cache/wal/colors | cut -c 2-)"
+c1="$(bash hexrgb $hc1)"
+c2="$(bash hexrgb $hc2)"
+c3="$(bash hexrgb $hc3)"
+cd ..
+touch manifest.json
+echo "{
+	\"name\":\"$dir\",
+	\"version\":\"1.0\",
+	\"description\":\"Theme based off of Wal\",
+	\"manifest_version\":2,
+	\"theme\":{
+		\"images\":{
+			\"theme_frame\":\"images/theme_frame.png\",
+			\"theme_toolbar\":\"images\/theme_toolbar.png\",
+			\"theme_tab_background\":\"images\/theme_tab_background.png\"
+		},
+		\"colors\":{
+			\"frame\":[$c1],
+			\"toolbar\":[$c1],
+			\"tab_text\":[$c2],
+			\"tab_background_text\":[$c3],
+			\"bookmark_text\":[$c3],
+			\"ntp_background\":[$c1],
+			\"ntp_text\":[$c3],
+			\"control_background\":[$c1],
+			\"button_background\":[$c2,0.9]
+		},
+		\"tints\":{
+			\"buttons\":[0.11,0.82,0.83]
+		},
+		\"properties\":{
+			\"ntp_background_alignment\":\"bottom\",
+			\"ntp_background_repeat\":\"no-repeat\"
 		}
-	}" >> manifest.json
-	echo "manifest.json made"
-	cd ..
-	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --pack-extension="$HOME/dotfiles/chrome/themes/$dir"
-	echo ".crx made"
-	rm -rf $dir
-	rm *.pem
-	echo "excess deleted"
-	open "$dir.crx"
-	echo "opening $dir.crx..."
-else
-	open "$HOME/dotfiles/chrome/themes/$dir.crx"
-fi
+	}
+}" >> manifest.json
+echo "manifest.json made"
+cd ..
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --pack-extension="$HOME/dotfiles/chrome/themes/$dir"
+echo ".crx made"
+rm -rf $dir
+rm *.pem
+echo "excess deleted"
+open "$dir.crx"
+echo "opening $dir.crx..."

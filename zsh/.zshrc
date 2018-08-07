@@ -15,3 +15,4 @@ alias sourcez="source ~/.zshrc"
 #path additions
 PATH="$HOME/dotfiles/scripts/:$PATH"
 export PATH
+export EDITOR=$(which nvim)
