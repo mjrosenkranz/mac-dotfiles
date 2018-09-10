@@ -56,6 +56,11 @@ hotkey.bind(cmdctrl, "L", function()
 	grid.set(window.focusedWindow(),hs.geometry.rect(6.0,0.0,6.0,6.0))
 end)
 
+--centerscreen
+hotkey.bind(cmdshift, "C", function()
+	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,6.0,3.0))
+end)
+
 --quarter screen
 hotkey.bind(cmdctrl, "J", function()
 	x = grid.get(window.focusedWindow()).x

@@ -71,6 +71,6 @@ set statusline+=\ %c\
 
 "keybindings
 let mapleader = ","
-nnoremap <leader>g :Goyo 50%x50%<cr>
+nnoremap <leader>g :Goyo 70%x70%<cr>
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>r :edit ~/.config/nvim/init.vim<cr>
