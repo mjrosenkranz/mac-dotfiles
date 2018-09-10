@@ -1,240 +1,135 @@
-hyper = {"cmd", "alt", "ctrl"} 
+--variables to make stuff easier
+local hotkey = require "hs.hotkey"
+local grid = require "hs.grid"
+local window = require "hs.window"
+local wf = require "hs.window.filter"
 
 --outer, upper, and window borders
-o_border = 30
-u_border = 0
-w_border = 15
+local u_border = 30
+local w_border = 30
 
---movement and resizing amount
-move = 40
+--make it jumpier
+window.animationDuration = 0
+
+grid.setMargins(hs.geometry.point(w_border,w_border))
+
+grid.setGrid('12x6', '1920x1200', hs.geometry.rect(0,20 + u_border,1920,1200 - u_border))
+
+local cmdshift = {"cmd", "shift"}
+local mash = {"cmd", "ctrl", "alt"}
+local shiftmash = {"cmd", "alt", "shift"}
+local cmdctrl = {"cmd", "ctrl"}
+
 
 --reload config
-hs.hotkey.bind({"cmd", "shift"}, "R", function()
+hotkey.bind({"cmd", "shift"}, "R", function()
 	hs.reload()
 end)
 hs.alert.show("Reloaded")
-
---open new terminal
-hs.hotkey.bind({"cmd"}, "E", function()
-	hs.osascript.applescriptFromFile("/Users/morgan/scripts/openterminal.scpt")
+--terminal
+hotkey.bind({"cmd"}, "Return", function()
+	hs.execute("osascript $HOME/dotfiles/scripts/openterminal.scpt")
 end)
+
 --focus window
-hs.hotkey.bind({"cmd"}, "H", function()
+hotkey.bind({"cmd"}, "H", function()
 	hs.window.filter.focusWest()
 end)
-hs.hotkey.bind({"cmd"}, "L", function()
+hotkey.bind({"cmd"}, "L", function()
 	hs.window.filter.focusEast()
 end)
-hs.hotkey.bind({"cmd"}, "K", function()
+hotkey.bind({"cmd"}, "K", function()
 	hs.window.filter.focusNorth()
 end)
-hs.hotkey.bind({"cmd"}, "J", function()
+hotkey.bind({"cmd"}, "J", function()
 	hs.window.filter.focusSouth()
 end)
-
---move window
-hs.hotkey.bind({"cmd", "shift"}, "H", function()
-	local win = hs.window.focusedWindow()
-  	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	if f.x > max.x + o_border then
-  		f.x = f.x - move
-	else
-		f.x = max.x + o_border
-	end
-  	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "L", function()
-	local win = hs.window.focusedWindow()
-  	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	if f.x < max.w - (o_border + f.w) then
-  		f.x = f.x + move
-	else
-		f.x = max.w - (o_border + f.w)
-	end
-  	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "K", function()
-	local win = hs.window.focusedWindow()
-  	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-	
-	if f.y > max.y + o_border + u_border then
-  		f.y = f.y - move
-	else
-		f.y = max.y + o_border + u_border
-	end
-  	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "J", function()
-	local win = hs.window.focusedWindow()
-  	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	if f.y < max.h - (o_border + f.h) then
-  		f.y = f.y + move
-	else
-		f.y = max.h - (o_border + f.h) + 20
-	end
-  	win:setFrame(f)
-end)
-
---window resizing
-hs.hotkey.bind({"cmd"}, "Left", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.w = f.w + 20
-	if f.x > max.x + o_border then
-  		f.x = f.x - 20
-	else
-		f.x = max.x + o_border
-	end
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "Right", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-
-	f.x = f.x + 20
-	f.w = f.w - 20
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd"}, "Right", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	if f.x < max.w - (o_border + f.w) then
-  		f.w = f.w + 20
-	else
-		f.x = f.x - 20
-		f.w = f.w + 20
-	end
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "Left", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.w = f.w - 20
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd"}, "Up", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	if f.y > max.y + o_border + u_border then
-  		f.y = f.y - 20
-	else
-		f.y = max.y + o_border + u_border
-	end
-	f.h = f.h + 20
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "Down", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.y = f.y + 40
-	f.h = f.h - 20
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd"}, "Down", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	if f.y < max.h - (o_border + f.h) then
-  		f.h = f.h + 20
-	else
-		f.y = f.y - 20
-		f.h = f.h + 20
-	end
-	win:setFrame(f)
-end)
-hs.hotkey.bind({"cmd", "shift"}, "Up", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.h = f.h - 20
-	win:setFrame(f)
-end)
-
 --fullscreen (with borders)
-hs.hotkey.bind({"cmd", "shift"}, "F", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + o_border
-	f.y = max.y + o_border + u_border
-	f.w = max.w - 2 * o_border
-	f.h = max.h - (2 * o_border + u_border)
-	win:setFrame(f)
+hotkey.bind(cmdshift, "F", function()
+	grid.maximizeWindow(window.focusedWindow())
 end)
-
 --halfscreen
-hs.hotkey.bind({"cmd", "ctrl"}, "H", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + o_border
-	f.y = max.y + o_border + u_border
-	f.w = max.w/2 - (2 * o_border + w_border)
-	f.h = max.h - (2 * o_border + u_border)
-	win:setFrame(f)
+hotkey.bind(cmdctrl, "H", function()
+	grid.set(window.focusedWindow(),hs.geometry.rect(0.0,0.0,6.0,6.0))
 end)
-hs.hotkey.bind({"cmd", "ctrl"}, "L", function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.x = max.x + max.w/2 + w_border
-	f.y = max.y + o_border + u_border
-	f.w = max.w/2 - (o_border + w_border)
-	f.h = max.h - (2 * o_border + u_border)
-	win:setFrame(f)
+hotkey.bind(cmdctrl, "L", function()
+	grid.set(window.focusedWindow(),hs.geometry.rect(6.0,0.0,6.0,6.0))
 end)
 
---move window to edge of border
---maybe make widnow location and size switching
---make centering function
+--quarter screen
+hotkey.bind(cmdctrl, "J", function()
+	x = grid.get(window.focusedWindow()).x
+	grid.set(window.focusedWindow(),hs.geometry.rect(x,3.0,6.0,3.0))
+end)
+hotkey.bind(cmdctrl, "K", function()
+	x = grid.get(window.focusedWindow()).x
+	grid.set(window.focusedWindow(),hs.geometry.rect(x,0.0,6.0,3.0))
+end)
+
+--Move windows faster
+hotkey.bind(shiftmash, "J", function()
+	grid.pushWindowDown()
+	grid.pushWindowDown()
+end)
+hotkey.bind(shiftmash, "K", function()
+	grid.pushWindowUp()
+	grid.pushWindowUp()
+end)
+hotkey.bind(shiftmash, "H", function()
+	grid.pushWindowLeft()
+	grid.pushWindowLeft()
+end)
+hotkey.bind(shiftmash, "L", function()
+	grid.pushWindowRight()
+	grid.pushWindowRight()
+end)
+
+--Move windows
+hotkey.bind(cmdshift, "J", grid.pushWindowDown)
+hotkey.bind(cmdshift, "K", grid.pushWindowUp)
+hotkey.bind(cmdshift, "H", grid.pushWindowLeft)
+hotkey.bind(cmdshift, "L", grid.pushWindowRight)
+
+
+--resize windows
+hotkey.bind({"cmd"}, "UP", function()
+	win = grid.get(window.focusedWindow())
+	win.y = win.y - 1
+	win.h = win.h + 1
+	grid.set(window.focusedWindow(),hs.geometry.rect(win.x,win.y,win.w,win.h))
+end)
+hotkey.bind(cmdshift, "UP", grid.resizeWindowShorter)
+
+hotkey.bind({"cmd"}, "DOWN", grid.resizeWindowTaller)
+hotkey.bind(cmdshift, "DOWN", function()
+	win = grid.get(window.focusedWindow())
+	win.y = win.y + 1
+	win.h = win.h - 1
+	grid.set(window.focusedWindow(),hs.geometry.rect(win.x,win.y,win.w,win.h))
+end)
+
+hotkey.bind({"cmd"}, "RIGHT", grid.resizeWindowWider)
+hotkey.bind(cmdshift, "RIGHT", function()
+	grid.resizeWindowThinner()
+	grid.pushWindowRight()
+end)
+
+hotkey.bind({"cmd"}, "LEFT", function()
+	win = grid.get(window.focusedWindow())
+	win.x = win.x - 1
+	win.w = win.w + 1
+	grid.set(window.focusedWindow(),hs.geometry.rect(win.x,win.y,win.w,win.h))
+end)
+hotkey.bind(cmdshift, "LEFT", grid.resizeWindowThinner)
 
 --window filter test
-local wf = hs.window.filter
 wf_finder = wf.new(false):setAppFilter('Finder')
 wf_finder:subscribe(wf.windowCreated, function()
-	local win = hs.window.focusedWindow()
-	local f = win:frame()
-	local screen = win:screen()
-	local max = screen:frame()
-
-	f.w = max.w/2 - (2 * o_border + w_border)
-	f.h = 500
-	f.x = max.w/2 - f.w/2
-	win:setFrame(f)
+	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,6.0,3.0))
 end)
+wf_term = wf.new(false):setAppFilter('iTerm2')
+wf_term:subscribe(wf.windowCreated, function()
+	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,6.0,3.0))
+end)
+--implement automatic snapping
+--make chrome screens go fullscreen

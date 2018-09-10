@@ -1,0 +1,63 @@
+@import "widgets/mybar/colors.css";
+@font-face{
+	font-family: "peep";
+	src:url("mybar/zevypeepMedium.dfont");
+}
+:root {
+	font-family:"peep";
+	--tc: var(--color0);
+	--bgc: var(--color1);
+	--elshadow: 0px 4px 10px 4px rgba(0,0,0,0.15);
+}
+.window {
+	position: absolute;
+	display: block;
+	margin-left: 2vw;
+	margin-top: 76vh;
+	width: 10vw;
+	height: 20vh;
+	box-shadow: var(--elshadow);
+	background-color: var(--bgc);
+	border-radius: 5px;
+}
+.cover {
+	position: absolute;
+	display: block;
+	border-radius: 5px;
+	margin: 0px;
+	width: 10vw;
+	height: 10vw;
+	background-color: red;
+}
+
+.controls {
+	position: absolute;
+	display: block;
+	margin-top: 16.8vh;
+	margin-left: 44px;
+}
+.btn{
+	display: inline-block;
+	padding: 0px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: var(--bgc);
+	font-size: 16px;
+	border: none;
+}
+#fb{
+	margin-left: 0px;
+	margin-right: 1vw;
+	color: var(--color3);
+}
+#st{
+	margin-left: 0px;
+	margin-right: 0px;
+	color: var(--color3);
+}
+#ff{
+	margin-left: 1vw;
+	margin-right: 0px;
+	color: var(--color3);
+}

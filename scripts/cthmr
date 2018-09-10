@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+__ScriptVersion="1"
+
+function usage ()
+{
+	echo "Usage :  $0 [options] [--]
+
+    Options:
+    -h|help       Display this message
+    -v|version    Display script version"
+
+}    # ----------  end of function usage  ----------
+
+
+#generates the chrome theme (args: color for background, current, and background tabs)
+function generate() {
+	#hexadecimal colors to be used
+	echo "background color: "
+	read color1
+	echo "current tab color: "
+	read color2
+	echo "background tab color: "
+	read color3
+	c1="$(sed -n "$color1 p" ~/.cache/wal/colors)"
+	c2="$(sed -n "$color2 p" ~/.cache/wal/colors | cut -c 2-)"
+	c3="$(sed -n "$color3 p" ~/.cache/wal/colors | cut -c 2-)"
+	#create temporary directory for generating theme
+	dir=${1%.*}
+	mkdir $HOME/dotfiles/chrome/themes/$dir
+	cd $HOME/dotfiles/chrome/themes/$dir
+	mkdir images
+	cd images
+	echo "directories made"
+	#create images to be used for themer
+	convert xc:"$c1"[20x1920!] theme_frame.png
+	convert xc:"$c1"[20x120!] theme_tab_background.png
+	convert xc:"$c1"[20x120!] theme_toolbar.png
+	cd ..
+	#get rid of the '#' part of c1
+	c1="$(sed -n "$color1 p" ~/.cache/wal/colors | cut -c 2-)"
+	#convert the hexadecimal values to rgb
+	c1="$(bash hexrgb $c1)"
+	c2="$(bash hexrgb $c2)"
+	c3="$(bash hexrgb $c3)"
+	touch manifest.json #{{{
+	echo "{
+		\"name\":\"$dir\",
+		\"version\":\"1.0\",
+		\"description\":\"Theme based off of Wal\",
+		\"manifest_version\":2,
+		\"theme\":{
+			\"images\":{
+				\"theme_frame\":\"images/theme_frame.png\",
+				\"theme_toolbar\":\"images\/theme_toolbar.png\",
+				\"theme_tab_background\":\"images\/theme_tab_background.png\"
+			},
+			\"colors\":{
+				\"frame\":[$c1],
+				\"toolbar\":[$c1],
+				\"tab_text\":[$c2],
+				\"tab_background_text\":[$c3],
+				\"bookmark_text\":[$c3],
+				\"ntp_background\":[$c1],
+				\"ntp_text\":[$c3],
+				\"control_background\":[$c3],
+				\"button_background\":[$c3]
+			},
+			\"tints\":{
+				\"buttons\":[1.0,0.84,0.0]
+			},
+			\"properties\":{
+				\"ntp_background_alignment\":\"bottom\",
+				\"ntp_background_repeat\":\"no-repeat\"
+			}
+		}
+	}" >> manifest.json #}}}
+	echo "manifest.json written"
+	cd ..
+	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --pack-extension="$HOME/dotfiles/chrome/themes/$dir"
+	echo "theme generated"
+	rm -rf $dir
+	rm *.pem
+	echo "excess deleted"
+	open "$dir.crx"
+	echo "opening $dir.crx..."
+	osascript $HOME/dotfiles/scripts/refresh.scpt
+}
+
+#handle commandline arguments
+while getopts ":hvf:i:" opt
+do
+  case $opt in
+
+	h     )  usage; exit 0   ;;
+
+	v  )  echo "$0 -- Version $__ScriptVersion"; exit 0   ;;
+
+	f ) wal -f $OPTARG; generate $OPTARG;;
+
+	i ) wal -i $OPTARG; generate $OPTARG;;
+
+	* )  echo -e "\n  Option does not exist : $OPTARG\n"
+		  usage; exit 1   ;;
+
+  esac
+done
+
+shift $(($OPTIND-1))

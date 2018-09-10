@@ -5,8 +5,8 @@ cp1=1
 cp2=5
 cp3=7
 path=""
-name=""
-while getopts "b:s:t:i:" opt; do
+name="theme"
+while getopts "b:s:t:i:f:" opt; do
 	case "$opt" in
 		b) cp1=$OPTARG
 			;;
@@ -15,6 +15,11 @@ while getopts "b:s:t:i:" opt; do
 		t)  cp3=$OPTARG
 			;;
 		i) name="$OPTARG"
+			path="$HOME/Pictures/Bgs/$name" [ -f "$path" ] && wal -i $path || echo "file $path does not exist"
+			;;
+		f) name="$OPTARG"
+			path="$HOME/dotfiles/schemes/$name"
+			[ -f "$path" ] && wal -f $path || echo "file $path does not exist"
 			;;
 		:) echo "Option -$OPTARG requires am argument"
 			exit 0;
@@ -25,8 +30,6 @@ done
 shift $((OPTIND-1))
 
 [ "${1:-}" = "--" ] && shift
-path="$HOME/Pictures/Bgs/$name"
-[ -f "$path" ] && wal -i $path || echo "file $path does not exist"
 hc1="$(sed -n "$cp1 p" ~/.cache/wal/colors)"
 hc2="$(sed -n "$cp2 p" ~/.cache/wal/colors | cut -c 2-)"
 hc3="$(sed -n "$cp3 p" ~/.cache/wal/colors | cut -c 2-)"
@@ -66,11 +69,11 @@ echo "{
 			\"bookmark_text\":[$c3],
 			\"ntp_background\":[$c1],
 			\"ntp_text\":[$c3],
-			\"control_background\":[$c1],
-			\"button_background\":[$c2,0.9]
+			\"control_background\":[$c3],
+			\"button_background\":[$c3]
 		},
 		\"tints\":{
-			\"buttons\":[0.11,0.82,0.83]
+			\"buttons\":[1.0,0.84,0.0]
 		},
 		\"properties\":{
 			\"ntp_background_alignment\":\"bottom\",
@@ -87,3 +90,4 @@ rm *.pem
 echo "excess deleted"
 open "$dir.crx"
 echo "opening $dir.crx..."
+osascript $HOME/dotfiles/scripts/refresh.scpt
