@@ -21,6 +21,7 @@ function generate() {
 	read color2
 	echo "background tab color: "
 	read color3
+	color1 = $((color1--))
 	c1="$(sed -n "$color1 p" ~/.cache/wal/colors)"
 	c2="$(sed -n "$color2 p" ~/.cache/wal/colors | cut -c 2-)"
 	c3="$(sed -n "$color3 p" ~/.cache/wal/colors | cut -c 2-)"

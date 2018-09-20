@@ -23,6 +23,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+Plug 'lilydjwg/colorizer'
 call plug#end()
 
 "use wal for colorshceme
@@ -74,3 +75,4 @@ let mapleader = ","
 nnoremap <leader>g :Goyo 70%x70%<cr>
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>r :edit ~/.config/nvim/init.vim<cr>
+nnoremap <leader>t :! pdflatex %<cr>
