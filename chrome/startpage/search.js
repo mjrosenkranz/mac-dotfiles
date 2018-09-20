@@ -1,7 +1,6 @@
 //Script for options to choose webpage to search
 document.getElementById("find").onkeydown = function(event) {
-	if(event.keyCode == 13){
-		return getText();
+	if(event.keyCode == 13){ return getText();
 	}
 }
 
@@ -118,6 +117,12 @@ const opts = {
 					break;
 				case '1800':
 					return go('https://course.ccs.neu.edu/cs1800/18F/index.html','','');
+					break;
+				case 'handin':
+					return go('https://handins.ccs.neu.edu/','','');
+					break;
+				case 'bb':
+					return go('https://northeastern.blackboard.com/webapps/portal/execute/tabs/tabAction?tab_tab_group_id=_3_1','','');
 					break;
 				default:
 					return go('https://my.northeastern.edu/','','');
