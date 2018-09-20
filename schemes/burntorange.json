@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/hip-square.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#f6f2e9",
+        "foreground": "#cc9568",
+        "cursor": "#cc9568"
+    },
+    "colors": {
+        "color0":  "#9c6538",
+        "color1":  "#f6f2e9",
+        "color2":  "#b4743f",
+        "color3":  "#c38551",
+        "color4":  "#cc9568",
+        "color5":  "#d4a67f",
+        "color6":  "#ddb696",
+        "color7":  "#e5c7ab",
+	    "color8":  "#9c6538",
+        "color9":  "#f6f2e9",
+        "color10": "#b4743f",
+        "color11": "#c38551",
+        "color12": "#cc9568",
+        "color13": "#d4a67f",
+        "color14": "#ddb696",
+        "color15": "#e5c7ab"
+    }
+}

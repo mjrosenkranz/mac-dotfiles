@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/seigaiha.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#DEDEDE",
+        "foreground": "#C6828A",
+        "cursor": "#C6828A"
+    },
+    "colors": {
+        "color0":  "#C6828A",
+        "color1":  "#DEDEDE",
+        "color2":  "#D5939B",
+        "color3":  "#A9B9E2",
+        "color4":  "#ABABE3",
+        "color5":  "#BCADE4",
+        "color6":  "#CDAFE5",
+        "color7":  "#DEB1E6",
+        "color8":  "#C6828A",
+        "color9":  "#CE8A93",
+        "color10": "#D5939B",
+        "color11": "#A9B9E2",
+        "color12": "#ABABE3",
+        "color13": "#BCADE4",
+        "color14": "#CDAFE5",
+        "color15": "#DEB1E6"
+    }
+}

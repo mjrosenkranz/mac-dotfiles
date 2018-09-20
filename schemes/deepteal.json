@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/deepteal.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#A3A38F",
+        "foreground": "#333333",
+        "cursor": "#1c544b"
+    },
+    "colors": {
+        "color0": "#1c544b",
+        "color1": "#A3A38F",
+        "color2": "#cca766",
+        "color3": "#c19445",
+        "color4": "#a17a36",
+        "color5": "#1c547a",
+        "color6": "#308fcf",
+        "color7": "#333333",
+        "color8": "#1c544b",
+        "color9": "#A3A38F",
+        "color10": "#cca766",
+        "color11": "#c19445",
+        "color12": "#a17a36",
+        "color13": "#1c547a",
+        "color14": "#308fcf",
+        "color15": "#333333"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/athens.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#fff7d6",
+        "foreground": "#544f45",
+        "cursor": "#d6b69f"
+    },
+    "colors": {
+        "color0":  "#544f45",
+        "color1":  "#fff7d6",
+        "color2":  "#E68B3D",
+        "color3":  "#E0A852",
+        "color4":  "#6B98D1",
+        "color5":  "#A7ABBE",
+        "color6":  "#97BF54",
+        "color7":  "#4AA045",
+        "color8":  "#544f45",
+        "color9":  "#fff7d6",
+        "color10": "#E68B3D",
+        "color11": "#E0A852",
+        "color12": "#6B98D1",
+        "color13": "#A7ABBE",
+        "color14": "#97BF54",
+        "color15": "#4AA045"
+    }
+}

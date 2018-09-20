@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/memphis.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#dddddd",
+        "foreground": "#f9d4ce",
+        "cursor": "#f9d4ce"
+    },
+    "colors": {
+        "color0": "#eeeeee",
+        "color1": "#F9D4CE",
+        "color2": "#DAE7CE",
+        "color3": "#CEDDE5",
+        "color4": "#C0BFD9",
+        "color5": "#F4AFA4",
+        "color6": "#CBDDBB",
+        "color7": "#BCD1DC",
+        "color8": "#eeeeee",
+        "color9": "#F9D4CE",
+        "color10": "#DAE7CE",
+        "color11": "#CEDDE5",
+        "color12": "#C0BFD9",
+        "color13": "#F4AFA4",
+        "color14": "#CBDDBB",
+        "color15": "#BCD1DC"
+    }
+}
