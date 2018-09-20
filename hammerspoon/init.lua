@@ -4,8 +4,9 @@ local grid = require "hs.grid"
 local window = require "hs.window"
 local wf = require "hs.window.filter"
 
---outer, upper, and window borders
-local u_border = 30
+--upper and window borders
+local t_bar = 10
+local u_border = 10
 local w_border = 30
 
 --make it jumpier
@@ -13,7 +14,7 @@ window.animationDuration = 0
 
 grid.setMargins(hs.geometry.point(w_border,w_border))
 
-grid.setGrid('12x6', '1920x1200', hs.geometry.rect(0,20 + u_border,1920,1200 - u_border))
+grid.setGrid('12x6', '1920x1200', hs.geometry.rect(0,20 + t_bar,1920,1200))
 
 local cmdshift = {"cmd", "shift"}
 local mash = {"cmd", "ctrl", "alt"}
