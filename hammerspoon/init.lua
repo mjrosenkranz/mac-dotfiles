@@ -3,6 +3,7 @@ local hotkey = require "hs.hotkey"
 local grid = require "hs.grid"
 local window = require "hs.window"
 local wf = require "hs.window.filter"
+local screen = require "hs.screen"
 
 --upper and window borders
 local t_bar = 10
@@ -13,8 +14,24 @@ local w_border = 30
 window.animationDuration = 0
 
 grid.setMargins(hs.geometry.point(w_border,w_border))
+local screen1 = screen.find('1920x1200')
+grid.setGrid('16x9', screen1, hs.geometry.rect(0,20 + t_bar,1920,1200))
+--make different layout for additional screen
+--function screenChange()
+--	local scrn = screen.mainScreen()
+--	local screen2 = screen.find('1360x768')
+--
+--	if scrn == screen1 then
+--	elseif scrn == screen2 then
+--		grid.setGrid('16x9', screen2, hs.geometry.rect(0,20 + t_bar,1360,768))
+--	end
+--end
+--watcher = screen.watcher.newWithActiveScreen(screenChange)
+--
+--
+--watcher:start()
 
-grid.setGrid('12x6', '1920x1200', hs.geometry.rect(0,20 + t_bar,1920,1200))
+
 
 local cmdshift = {"cmd", "shift"}
 local mash = {"cmd", "ctrl", "alt"}
@@ -31,6 +48,7 @@ hs.alert.show("Reloaded")
 hotkey.bind({"cmd"}, "Return", function()
 	hs.execute("osascript $HOME/dotfiles/scripts/openterminal.scpt")
 end)
+--open finder window shortcut
 
 --focus window
 hotkey.bind({"cmd"}, "H", function()
@@ -45,21 +63,22 @@ end)
 hotkey.bind({"cmd"}, "J", function()
 	hs.window.filter.focusSouth()
 end)
---fullscreen (with borders)
+--fullscreen
 hotkey.bind(cmdshift, "F", function()
 	grid.maximizeWindow(window.focusedWindow())
 end)
+
 --halfscreen
 hotkey.bind(cmdctrl, "H", function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(0.0,0.0,6.0,6.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(0.0,0.0,8.0,9.0))
 end)
 hotkey.bind(cmdctrl, "L", function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(6.0,0.0,6.0,6.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(8.0,0.0,8.0,9.0))
 end)
 
 --centerscreen
 hotkey.bind(cmdshift, "C", function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,6.0,3.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(2.0,1.0,12.0,7.0))
 end)
 
 --quarter screen
@@ -131,11 +150,14 @@ hotkey.bind(cmdshift, "LEFT", grid.resizeWindowThinner)
 --window filter test
 wf_finder = wf.new(false):setAppFilter('Finder')
 wf_finder:subscribe(wf.windowCreated, function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,6.0,3.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(2.0,1.0,7.0,7.0))
 end)
 wf_term = wf.new(false):setAppFilter('iTerm2')
 wf_term:subscribe(wf.windowCreated, function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,6.0,3.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(9.0,1.0,6.0,3.0))
 end)
 --implement automatic snapping
 --make chrome screens go fullscreen
+
+
+
