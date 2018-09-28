@@ -4,7 +4,7 @@
 
 ----
 
-##Info:
+## Info:
 
 **wm:**		 `hammerspoon`
 
