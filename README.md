@@ -1,6 +1,6 @@
 ### my macOS dotfiles
 
-![fake_busy](/Users/morgan/dotfiles/scrots/fake_busy.png)
+![fake_busy](https://github.com/Morgan-Rosenkranz/dotfiles/blob/master/scrots/fake_busy.png)
 
 ----
 
