@@ -1,0 +1,91 @@
+{
+	"variables":
+	{
+        "color0":  "#7f7f7f",
+        "color1":  "#2b2b2b",
+        "color2":  "#79ae79",
+        "color3":  "#9ac29a",
+        "color4":  "#79acaf",
+        "color5":  "#90babc",
+        "color6":  "#797baf",
+        "color7":  "#999ac2",
+        "cursor":  "#7f7f7f",
+    },
+    "globals":
+    {
+        "foreground": "var(color0)",
+        "background": "var(color1)",
+        "caret": "var(color4)",
+        "invisibles": "var(color5)",
+        "line_highlight": "color(var(cursor) alpha(0.33))",
+        "selection": "color(var(cursor) alpha(0.33))"
+    },
+    "rules":
+    [
+        // comment
+        {
+            "name": "Comment",
+            "scope": "comment",
+            "foreground": "var(color5)"
+        },
+
+        // entity.name
+        // entity.other.inherited-class
+        // entity.name.section
+        // entity.other.attribute-name
+        {
+            "name": "Entity",
+            "scope": "entity.name, entity.other.inherited-class, entity.name.section, entity.other.attribute-name",
+            "foreground": "var(color7)"
+        },
+
+
+        // string
+        // variable 
+        // variable.language
+        // variable.parameter
+        // entity.name.constant
+        // entity.name.tag
+        {
+            "name": "Variable",
+            "scope": "variable, variable.language, variable.parameter, entity.name.tag, entity.name.constant, string, punctuation.definition.variable",
+            "foreground": "var(color4)"
+        },
+
+
+        // constant.language
+        // storage.modifier
+        // storage.type
+        // support.type
+        // support.class
+        // keyword.control
+        // keyword
+        // keyword.operator
+        // storage.type
+        // punctuation.definition.variable
+        // variable.function
+        // constant.character.escape
+        {
+            "name": "Type",
+            "scope": " variable.function, constant.language, storage.modifier, storage.type, support.type, support.class, keyword, storage.type, constant.character.escape",
+            "foreground": "var(color6)"
+        },
+
+        // constant.numeric
+        // constant
+        {
+            "name": "Constant",
+            "scope": "constant.numeric, constant",
+            "foreground": "var(color3)"
+        },
+
+        // invalid
+        // invalid.deprecated
+        {
+            "name": "Invalid",
+            "scope": "invalid, invalid.deprecated",
+            "foreground": "#ff0000"
+        },
+        
+    ]
+}

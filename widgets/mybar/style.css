@@ -8,7 +8,9 @@
 	font-family:"peep";
 	--tc: var(--color0);
 	--bgc: var(--color1);
-	--elshadow: none;/*0px 4px 10px 4px rgba(0,0,0,0.15);*/
+	/* --elshadow: 0px 4px 10px 4px rgba(0,0,0,0.15); */
+	--elshadow: none;
+	--br: 5px;
 }
 .background {
 	position: absolute;
@@ -16,10 +18,11 @@
 	width: 97vw;
 	height: 30px;
 	margin-top: 20px;
-	margin-left: 1.5vw; 
+	margin-left: 1.5vw;
 	background-color: var(--bgc);
+	/* background-color: none; */
 	box-shadow: 0px 10px 10px 4px rgba(0,0,0,0.4);
-	border-radius: 5px;
+	border-radius: var(--br);
 	z-index: -1;
 }
 p {
@@ -67,9 +70,9 @@ p.l {
 	height: 30px;
 	margin-left: 46.5vw;
 	margin-top: 20px;
-	border-radius: 5px;
+	border-radius: var(--br);
 	background-color: var(--bgc);
-	box-shadow: var(--elshadow); 
+	box-shadow: var(--elshadow);
 }
 
 .right {
@@ -79,9 +82,9 @@ p.l {
 	height: 30px;
 	margin-left: 92.5vw;
 	margin-top: 20px;
-	border-radius: 5px;
+	border-radius: var(--br);
 	background-color: var(--bgc);
-	box-shadow: var(--elshadow); 
+	box-shadow: var(--elshadow);
 }
 .midright {
 	position: absolute;
@@ -90,9 +93,9 @@ p.l {
 	height: 30px;
 	margin-left: 87.5vw;
 	margin-top: 20px;
-	border-radius: 5px;
+	border-radius: var(--br);
 	background-color: var(--bgc);
-	box-shadow: var(--elshadow); 
+	box-shadow: var(--elshadow);
 }
 .rightleft {
 	position: absolute;
@@ -101,7 +104,7 @@ p.l {
 	height: 30px;
 	margin-left: 77.5vw;
 	margin-top: 20px;
-	border-radius: 5px;
+	border-radius: var(--br);
 	background-color: var(--bgc);
 	box-shadow: var(--elshadow);
 }
@@ -112,7 +115,7 @@ p.l {
 	height: 30px;
 	margin-left: 1.5vw;
 	margin-top: 20px;
-	border-radius: 5px;
+	border-radius: var(--br);
 	background-color: var(--bgc);
 	box-shadow: var(--elshadow);
 }

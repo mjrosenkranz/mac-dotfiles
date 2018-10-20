@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/funkylines.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#7f7f7f",
+        "foreground": "#2b2b2b",
+        "cursor": "#2b2b2b"
+    },
+    "colors": {
+        "color0":  "#7f7f7f",
+        "color1":  "#2b2b2b",
+        "color2":  "#79ae79",
+        "color3":  "#9ac29a",
+        "color4":  "#79acaf",
+        "color5":  "#90babc",
+        "color6":  "#797baf",
+        "color7":  "#999ac2",
+        "color8":  "#7f7f7f",
+        "color9":  "#2b2b2b",
+        "color10":  "#79ae79",
+        "color11":  "#9ac29a",
+        "color12":  "#79acaf",
+        "color13":  "#90babc",
+        "color14":  "#797baf",
+        "color15":  "#999ac2"
+    }
+}

@@ -1,0 +1,316 @@
+[
+// "color0":  "#7f7f7f", 127 127 127
+// "color1":  "#2b2b2b", 43  43  43
+// "color2":  "#79ae79", 121 174 121
+// "color3":  "#9ac29a", 154 194 154
+// "color4":  "#79acaf", 121 172 175
+// "color5":  "#90babc", 144 186 188
+// "color6":  "#797baf", 121 123 175
+// "color7":  "#999ac2", 153 154 194
+
+// title bar
+{
+	"class":"title_bar",
+	"fg":[43, 43, 43],
+	"bg":[127, 127, 127]
+},
+
+// side bar
+{
+    "class": "sidebar_container",
+    "layer0.tint": [127, 127, 127],
+    "layer0.opacity": 1.0,
+    "content_margin": 0,
+},
+{
+    "class": "sidebar_container",
+    "parents": [{"class": "window"}],
+    "layer0.tint": [127, 127, 127],
+    "layer0.opacity": 1.0,
+},
+{
+    "class": "sidebar_tree",
+    "row_padding": [16, 3, 16, 3],
+    "indent": 12,
+    "indent_offset": 13,
+    "indent_top_level": false,
+    "dark_content": true,
+    "spacer_rows": false
+},
+{
+    "class": "tree_row",
+    "attributes": ["selectable", "hover"],
+    "layer0.tint": [43, 43, 43, 0.6],
+    "layer0.opacity": 1.0,
+},
+{
+    "class": "tree_row",
+    "attributes": ["!hover"],
+    "layer0.opacity": 0.0,
+},
+{
+    "class": "tree_row",
+    "attributes": ["selected"],
+    "layer0.tint": [43, 43, 43],
+    "layer0.opacity": 1.0,
+},
+{
+	"class": "sidebar_label",
+	"fg":[43, 43, 43],
+	"font.face": "Fira Code",
+	"font.size": 12,
+},
+{
+	"class": "sidebar_label",
+	"parents":[{"class": "tree_row", "attributes":["selected"]}],
+	"fg":[127, 127, 127],
+},
+{
+	"class": "sidebar_label",
+	"parents":[{"class": "tree_row", "attributes":["selectable", "hover"]}],
+	"fg":[127, 127, 127],
+},
+{
+	"class": "sidebar_heading",
+	"fg":[43, 43, 43],
+	"font.face": "Fira Code",
+	"font.size": 16,
+},
+// {
+// 	"class": "close_button",
+// 	"content_margin": 3,
+// }
+
+// tabs
+{
+	"class":"tabset_control",
+	"content_margin": 0,
+	"tab_overlap": 0,
+	"tab_width": 150,
+	"tab_min_width": 60,
+	"tab_height": 40,
+	"layer0.opacity": 0.6,
+	"layer0.tint": [127, 127, 127],
+},
+{
+	"class":"tab_control",
+	"content_margin": [10, 5, 10, 5],
+},
+{
+	"class":"tab_control",
+	"attributes": ["!selected"],
+	"layer0.tint":[127, 127, 127],
+	"layer0.opacity": 0.6,
+},
+{
+	"class":"tab_control",
+	"attributes": ["selected"],
+	"layer0.tint":[43, 43, 43],
+	"layer0.opacity": 1.0,
+},
+{
+	"class":"tab_label",
+	"font.face": "Fira Code",
+	"font.size": 12,
+	"fg":[43, 43, 43],
+},
+{
+	"class":"tab_label",
+	"parents":[{"class":"tab_control","attributes": ["selected"]}],
+	"fg":[127, 127, 127],
+},
+{
+	"class":"tab_label",
+	"parents":[{"class":"tab_control","attributes": ["!selected"]}],
+	"fg":[43, 43, 43],
+},
+{
+	"class":"tab_label",
+	"parents":[{"class":"tab_control","attributes": ["dirty"]}],
+	"fg":[121, 174, 121],
+},
+
+// popups
+{
+	"class":"popup_control",
+	"content_margin": [0, 0],
+	"layer0.tint": [127, 127, 127],
+    "layer0.opacity": 1,
+},
+{
+    "class": "auto_complete",
+    "row_padding": [8, 8]
+},
+{
+	"class": "auto_complete_label",
+	"font.face": "Fira Code",
+	"font.size": 5,
+	"fg": [127, 127, 127],
+	"match_fg": [121, 174, 121],
+    "selected_fg": [154, 194, 154],
+    "selected_match_fg": [121, 174, 121],
+},
+{
+	"class":"table_row",
+	//"row_padding": [0, 0, 0, 0],
+	"layer0.tint": [43, 43, 43],
+    "layer0.opacity": 0.7,
+},
+{
+	"class":"table_row",
+	"attributes": ["selected"],
+	"row_padding": [0, 20, 0, 20],
+	"layer0.tint": [43, 43, 43],
+    "layer0.opacity": 0.9,
+},
+{
+	"class":"table_row",
+	"attributes": ["hover"],
+	"row_padding": [0, 20, 0, 20],
+	"layer0.tint": [43, 43, 43],
+    "layer0.opacity": 0.9,
+},
+
+
+// quick panel
+{
+	"class":"overlay_control",
+	"content_margin": 10,
+	"layer0.tint": [127, 127, 127],
+	"layer0.opacity": 0.7,
+	"layer0.inner_margin": 10,
+},
+{
+	"class":"quick_panel",
+	"row_padding": [10, 20, 0, 10],
+	"dark_content": true
+},
+{
+	"class":"quick_panel_row",
+	"row_padding": [0, 20, 0, 20],
+	"layer0.tint": [43, 43, 43],
+    "layer0.inner_margin": 8,
+    "layer0.opacity": 0.7,
+},
+{
+	"class":"quick_panel_row",
+	"attributes": ["selected"],
+	"row_padding": [0, 20, 0, 20],
+	"layer0.tint": [43, 43, 43],
+    "layer0.inner_margin": 8,
+    "layer0.opacity": 0.9,
+},
+{
+	"class":"quick_panel_label",
+	"font.face": "Fira Code",
+	"font.size": 12,
+	"fg": [127, 127, 127],
+	"match_fg": [121, 174, 121],
+    "selected_fg": [154, 194, 154],
+    "selected_match_fg": [121, 174, 121],
+},
+{
+	"class":"quick_panel_path_label",
+	"font.face": "Fira Code",
+	"font.size": 10,
+	"fg": [43, 43, 43],
+	"bg": [20, 0, 0],
+	"match_fg": [154, 194, 154],
+    "selected_fg": [121, 174, 121],
+    "selected_match_fg": [154, 194, 154],
+},
+{
+	"class":"mini_quick_panel_row",
+	"row_padding": [0, 0, 0, 0],
+	"layer0.tint": [43, 43, 43],
+    "layer0.inner_margin": 8,
+    "layer0.opacity": 0.7,
+},
+{
+	"class":"mini_quick_panel_row",
+	"attributes": ["selected"],
+	"row_padding": [0, 20, 0, 20],
+	"layer0.tint": [43, 43, 43],
+    "layer0.inner_margin": 8,
+    "layer0.opacity": 0.9,
+},
+{
+	"class":"mini_quick_panel_row",
+	"attributes": ["hover"],
+	"row_padding": [0, 20, 0, 20],
+	"layer0.tint": [43, 43, 43],
+    "layer0.inner_margin": 8,
+    "layer0.opacity": 0.9,
+},
+
+// panels
+{
+    "class": "panel_control",
+    "layer0.tint": [127, 127, 127], //bottom panel background
+    "layer0.inner_margin": [0, 0],
+    "layer0.opacity": 1.0,
+    "content_margin": 0,
+},
+
+// inputs
+{
+	"class": "text_line_control",
+	"color_scheme_tint":[43, 43, 43],
+},
+// {
+// 	"class":"label_control",
+// 	"parents":[{"class": "text_line_control"}],
+// 	"color": [],
+// }
+
+// tool tips
+{
+	"class":"tool_tip_control",
+	"layer0.tint":[43, 43, 43],
+	"layer0.opacity": 1.0,
+},
+{
+	"class":"tool_tip_label_control",
+	"color":[154, 194, 154],
+	"font.face": "Fira Code",
+	"font.size": 10,
+},
+
+// status bar
+{
+	"class":"status_bar",
+	//"layer0.tint":[43, 43, 43],
+	"layer0.tint":[127, 127, 127],
+	"layer0.opacity":1.0,
+	"content_margin": 10,
+},
+{
+	"class":"panel_button_control",
+	"layer0.tint":[154, 194, 154],
+	"layer0.opacity":1.0,
+	"content_margin": 5,
+},
+{
+	"class":"status_container",
+	//"layer0.tint":[154, 194, 154],
+	"layer0.opacity":0,
+	"content_margin": [10, 5, 0, 5],
+},
+{
+	"class":"status_button",
+	"content_margin": 1,
+},
+{
+	"class":"label_control",
+	"parents":[{"class": "status_container"}],
+	"font.face": "Fira Code",
+	"font.size": 10,
+},
+{
+	"class":"label_control",
+	"parents":[{"class": "status_button"}],
+	"font.face": "Fira Code",
+	"font.size": 10,
+},
+
+]
