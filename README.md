@@ -1,6 +1,6 @@
 ### my macOS dotfiles
 
-![fake_busy](https://github.com/Morgan-Rosenkranz/dotfiles/blob/master/scrots/fake_busy.png)
+![fake_busy](https://github.com/Morgan-Rosenkranz/dotfiles/blob/master/scrots/combo.png)
 
 ----
 
@@ -12,8 +12,9 @@
 
 **colors:** 	`wal`
 
-**shell:**		 `zsh`
+**shell:**		 `fish/bash`
 
 **start page:** `./chrome/startpage/`
+**sublime theme:** `dark0`
 
 **bar:**		 `übersicht`
