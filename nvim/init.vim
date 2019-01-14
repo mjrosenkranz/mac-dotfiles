@@ -12,6 +12,8 @@ set clipboard=unnamed
 " file settings
 set number
 set foldmethod=marker
+set tabstop=4
+set shiftwidth=4
 
 "plugins
 call plug#begin('~/.local/share/nvim/site/autoload/')
@@ -21,9 +23,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'dylanaraps/wal.vim'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
 Plug 'lilydjwg/colorizer'
+Plug 'wlangstroth/vim-racket'
 call plug#end()
 
 "use wal for colorshceme
@@ -52,8 +53,8 @@ let g:currentmode={
       \ '!'  : 'Shell ',
       \ 't'  : 'TERMINAL '
       \}
-hi Block1 ctermfg=0 ctermbg=2
-hi Block2 ctermfg=0 ctermbg=5
+hi Block1 ctermfg=0 ctermbg=4
+hi Block2 ctermfg=0 ctermbg=6
 hi Block3 ctermfg=0 ctermbg=6
 
 set laststatus=2
@@ -76,3 +77,6 @@ nnoremap <leader>g :Goyo 70%x70%<cr>
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>r :edit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>t :! pdflatex %<cr>
+vmap <leader>c :!xclip -f -sel clip<cr>
+map <leader>v i: !xclip -o -sel clip<cr><Esc>
+

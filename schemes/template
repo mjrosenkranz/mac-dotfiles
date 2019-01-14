@@ -1,0 +1,36 @@
+
+! colors
+#define fg		#
+#define bg		#
+	
+! black	
+#define blk 	#
+#define bblk	#
+
+! red	
+#define red		#
+#define bred	#
+	
+! green	
+#define grn		#
+#define bgrn	#
+	
+! yellow	
+#define ylw		#
+#define bylw	#
+	
+! blue	
+#define blu		#
+#define bblu	#
+	
+! magenta	
+#define mga		#
+#define bmga	#
+	
+! cyan	
+#define cya		#
+#define bcya	#
+	
+! white	
+#define wht		#
+#define bwht	#

@@ -97,42 +97,48 @@ hotkey.bind(shiftmash, "L", function()
 end)
 
 --Move windows
-hotkey.bind(cmdshift, "J", grid.pushWindowDown)
-hotkey.bind(cmdshift, "K", grid.pushWindowUp)
-hotkey.bind(cmdshift, "H", grid.pushWindowLeft)
-hotkey.bind(cmdshift, "L", grid.pushWindowRight)
+hotkey.bind(cmdshift, "J", grid.pushWindowDown, null, grid.pushWindowDown)
+hotkey.bind(cmdshift, "K", grid.pushWindowUp, null, grid.pushWindowUp)
+hotkey.bind(cmdshift, "H", grid.pushWindowLeft, null, grid.pushWindowLeft)
+hotkey.bind(cmdshift, "L", grid.pushWindowRight, null, grid.pushWindowRight)
 
 
 --resize windows
-hotkey.bind({"cmd"}, "UP", function()
+function tallerUp ()
 	win = grid.get(window.focusedWindow())
 	win.y = win.y - 1
 	win.h = win.h + 1
 	grid.set(window.focusedWindow(),hs.geometry.rect(win.x,win.y,win.w,win.h))
-end)
-hotkey.bind(cmdshift, "UP", grid.resizeWindowShorter)
+end
+hotkey.bind({"cmd"}, "UP", tallerUp, null, tallerUp)
 
-hotkey.bind({"cmd"}, "DOWN", grid.resizeWindowTaller)
-hotkey.bind(cmdshift, "DOWN", function()
+hotkey.bind(cmdshift, "UP", grid.resizeWindowShorter, null, grid.resizeWindowShorter)
+
+hotkey.bind({"cmd"}, "DOWN", grid.resizeWindowTaller, null, grid.resizeWindowTaller)
+function smallerDown ()
 	win = grid.get(window.focusedWindow())
 	win.y = win.y + 1
 	win.h = win.h - 1
 	grid.set(window.focusedWindow(),hs.geometry.rect(win.x,win.y,win.w,win.h))
-end)
+end
+hotkey.bind(cmdshift, "DOWN", smallerDown, null, smallerDown)
 
-hotkey.bind({"cmd"}, "RIGHT", grid.resizeWindowWider)
-hotkey.bind(cmdshift, "RIGHT", function()
+hotkey.bind({"cmd"}, "RIGHT", grid.resizeWindowWider, null, grid.resizeWindowWider)
+function smallerRight ()
 	grid.resizeWindowThinner()
 	grid.pushWindowRight()
-end)
+end
+hotkey.bind(cmdshift, "RIGHT", smallerRight, null, smallerRight)
 
-hotkey.bind({"cmd"}, "LEFT", function()
+function biggerLeft()
 	win = grid.get(window.focusedWindow())
 	win.x = win.x - 1
 	win.w = win.w + 1
 	grid.set(window.focusedWindow(),hs.geometry.rect(win.x,win.y,win.w,win.h))
-end)
-hotkey.bind(cmdshift, "LEFT", grid.resizeWindowThinner)
+end
+hotkey.bind({"cmd"}, "LEFT", biggerLeft, null, biggerLeft)
+
+hotkey.bind(cmdshift, "LEFT", grid.resizeWindowThinner, null, grid.resizeWindowThinner)
 
 --window filter test
 wf_finder = wf.new(false):setAppFilter('Finder')
@@ -141,7 +147,7 @@ wf_finder:subscribe(wf.windowCreated, function()
 end)
 wf_term = wf.new(false):setAppFilter('iTerm2')
 wf_term:subscribe(wf.windowCreated, function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(9.0,1.0,6.0,3.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(9.0,1.0,7.0,4.0))
 end)
 --implement automatic snapping
 --make chrome screens go fullscreen
