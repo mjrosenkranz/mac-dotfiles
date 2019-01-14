@@ -43,6 +43,6 @@ export GREP_OPTIONS=' --color=auto'
 export EDITOR=nvim
 #shopt -s autocd
 shopt -s cdspell
-if [ -f /etc/bash_completion ]; then
- . /etc/bash_completion
-fi
+#if [ -f /etc/bash_completion ]; then
+# . /etc/bash_completion
+#fi
