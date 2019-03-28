@@ -8,11 +8,12 @@
 syntax on
 set noswapfile
 set clipboard=unnamed
+set mouse=a
 
 " file settings
 set number
 set foldmethod=marker
-set tabstop=4
+set tabstop=2
 set shiftwidth=4
 
 " plugins
@@ -82,3 +83,12 @@ nnoremap <leader>t :! pdflatex %<cr>
 vmap <leader>c :!xclip -f -sel clip<cr>
 map <leader>v i: !xclip -o -sel clip<cr><Esc>
 
+" coc complete next
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" use return to confirm complete
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
