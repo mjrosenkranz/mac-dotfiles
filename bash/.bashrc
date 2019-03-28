@@ -1,9 +1,9 @@
-c1="\e[0;37m"
-c2="\e[0;36m"
-c3="\e[0;32m"
-c4="\e[0;35m"
+c1="$(tput setaf 5)"
+c2="$(tput setaf 6)"
+c3="$(tput setaf 2)"
 
-export PS1="\[$c4\]\u@\h \[$c3\]\w\n\[$c4\]$ \[$c1\]"
+
+export PS1=$(echo -e "$c1\u@\h $c3\w\n$c4\ufb0c $c2")
 
 export PATH="/usr/local/bin:/Users/morgan/mac-dotfiles/scripts/:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -21,10 +21,12 @@ alias dots="cd $HOME/mac-dotfiles"
 alias scripts="cd $HOME/mac-dotfiles/scripts"
 alias q="exit"
 alias ext="cd /Volumes/EMPTY"
-alias yt="youtube-dl"
+alias yt="youtube-dl -o '%(title)s.%(ext)s' -f mp4"
 
 
 #other settings
 export EDITOR=nvim
 #shopt -s autocd
 shopt -s cdspell
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

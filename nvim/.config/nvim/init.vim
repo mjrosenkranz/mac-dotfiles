@@ -15,65 +15,67 @@ set foldmethod=marker
 set tabstop=4
 set shiftwidth=4
 
-"plugins
+" plugins
 call plug#begin('~/.local/share/nvim/site/autoload/')
-Plug 'junegunn/goyo.vim'
-Plug 'tpope/vim-eunuch'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'dylanaraps/wal.vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
 Plug 'lilydjwg/colorizer'
-Plug 'wlangstroth/vim-racket'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
-"use wal for colorshceme
+" use wal for colorshceme
 colorscheme wal
 
-" statusline
-set noshowmode
-let g:currentmode={
-      \ 'n'  : 'NORMAL ',
-      \ 'no' : 'NORMAL OP ',
-      \ 'v'  : 'VISUAL ',
-      \ 'V'  : 'VISUAL-LINE ',
-      \ 'x22' : 'VISUAL-BLOCK ',
-      \ 's'  : 'SELECT ',
-      \ 'S'  : 'SELECT-LINE ',
-      \ 'x19' : 'SELECT-BLOCK ',
-      \ 'i'  : 'INSERT ',
-      \ 'R'  : 'REPLACE ',
-      \ 'Rv' : 'V·Replace ',
-      \ 'c'  : 'Command ',
-      \ 'cv' : 'Vim Ex ',
-      \ 'ce' : 'Ex ',
-      \ 'r'  : 'Prompt ',
-      \ 'rm' : 'More ',
-      \ 'r?' : 'Confirm ',
-      \ '!'  : 'Shell ',
-      \ 't'  : 'TERMINAL '
-      \}
-hi Block1 ctermfg=0 ctermbg=4
-hi Block2 ctermfg=0 ctermbg=6
-hi Block3 ctermfg=0 ctermbg=6
+let s:black = [ '', 232 ]
+let s:gray = [ '', 8 ]
+let s:white = [ '', 0 ]
+let s:darkblue = [ '', 4 ]
+let s:cyan = [ '', 6 ]
+let s:green = [ '', 2 ]
+let s:purple = [ '', 5 ]
+let s:red = [ '', 1 ]
+let s:yellow = [ '', 3 ]
 
-set laststatus=2
-set statusline=
-set statusline+=%#Block1#
-set statusline+=\ %{g:currentmode[mode()]}
-set statusline+=%#Block2#
-set statusline+=%F
-set statusline+=%=
-set statusline+=\ %Y\ 
-set statusline+=%#Block1#
-set statusline+=\ Ln
-set statusline+=\ %l
-set statusline+=,Col
-set statusline+=\ %c\ 
+let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+let s:p.normal.left = [ [ s:gray, s:cyan ], [ s:black, s:yellow ] ]
+let s:p.normal.right = [ [ s:gray, s:cyan ], [ s:black, s:yellow ] ]
+let s:p.normal.middle = [ [ s:gray, s:cyan ] ]
+let s:p.normal.error = [ [ s:red, s:black ] ]
+let s:p.normal.warning = [ [ s:yellow, s:black ] ]
+
+let s:p.insert.left = [ [ s:black, s:green ], [ s:black, s:yellow ] ]
+let s:p.insert.middle = [ [ s:black, s:green ] ]
+let s:p.insert.right = [ [ s:black, s:green ], [ s:black, s:yellow ] ]
+
+let s:p.visual.left = [ [ s:black, s:purple ], [ s:black, s:yellow ] ]
+let s:p.visual.middle = [ [ s:black, s:purple ] ]
+let s:p.visual.right = [ [ s:black, s:purple ], [ s:black, s:yellow ] ]
+
+let s:p.inactive.middle = [ [ s:white, s:gray ] ]
+let s:p.inactive.right = [ [ s:white, s:gray ], [ s:black, s:yellow ] ]
+let s:p.inactive.left =  [ [ s:white, s:gray ], [ s:black, s:yellow ] ]
+
+let s:p.replace.left = [ [ s:black, s:red ], [ s:cyan, s:gray ] ]
+
+" nonactive
+let s:p.tabline.left = [ [ s:white, s:darkblue ] ]
+" selected
+let s:p.tabline.tabsel = [ [ s:black, s:purple ] ]
+" whitespace
+let s:p.tabline.middle = [ [ s:black, s:darkblue ] ]
+" right side
+let s:p.tabline.right = [ [ s:white, s:purple ] ]
+
+let g:lightline#colorscheme#term#palette = lightline#colorscheme#flatten(s:p)
+
+" statusline
+let g:lightline = {
+			\ 'colorscheme': 'term',
+			\ 'separator': { 'left': '▊▋▌▍▎', 'right': '▎▍▌▋▊' },
+      \ }
 
 "keybindings
 let mapleader = ","
-nnoremap <leader>g :Goyo 70%x70%<cr>
 nnoremap <leader>s :source ~/.config/nvim/init.vim<cr>
 nnoremap <leader>r :edit ~/.config/nvim/init.vim<cr>
 nnoremap <leader>t :! pdflatex %<cr>

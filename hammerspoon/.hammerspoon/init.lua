@@ -6,7 +6,7 @@ local wf = require "hs.window.filter"
 local screen = require "hs.screen"
 
 --upper and window borders
-local t_bar = 25
+local t_bar = 35
 local u_border = 10
 local w_border = 30
 
@@ -15,8 +15,8 @@ window.animationDuration = 0
 
 grid.setMargins(hs.geometry.point(w_border,w_border))
 local screen1 = screen.find('1920x1200')
--- grid.setGrid('16x9', screen1, hs.geometry.rect(0, t_bar,1920,1200 - t_bar))
-grid.setGrid('16x9', screen1, hs.geometry.rect(0, 0,1920,1200))
+grid.setGrid('16x9', screen1, hs.geometry.rect(0, t_bar,1920,1200 - t_bar))
+-- grid.setGrid('16x9', screen1, hs.geometry.rect(0, 0,1920,1200))
 
 
 
@@ -32,9 +32,9 @@ hotkey.bind({"cmd", "shift"}, "R", function()
 end)
 hs.alert.show("Reloaded")
 --terminal
-hotkey.bind({"cmd"}, "Return", function()
-	hs.execute("osascript $HOME/dotfiles/scripts/openterminal.scpt")
-end)
+--hotkey.bind({"cmd"}, "Return", function()
+--	hs.execute("osascript $HOME/dotfiles/scripts/openterminal.scpt")
+--end)
 --open finder window shortcut
 
 --focus window
@@ -52,7 +52,7 @@ hotkey.bind({"cmd"}, "J", function()
 end)
 --fullscreen
 hotkey.bind(cmdshift, "F", function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(2.0,0.0,14,9.0))
+	grid.set(window.focusedWindow(),hs.geometry.rect(0.0,0.0,16,9.0))
 end)
 
 --halfscreen
@@ -64,8 +64,8 @@ hotkey.bind(cmdctrl, "L", function()
 end)
 
 --centerscreen
-hotkey.bind(cmdshift, "C", function()
-	grid.set(window.focusedWindow(),hs.geometry.rect(3.0,1.0,12.0,7.0))
+hotkey.bind(shiftmash, "C", function()
+	grid.set(window.focusedWindow(),hs.geometry.rect(2.0,1.0,12.0,7.0))
 end)
 
 --quarter screen
