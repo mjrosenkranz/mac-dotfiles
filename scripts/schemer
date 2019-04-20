@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# output file
+out="$HOME/mac-dotfiles/schemes/log"
+
+main() {
+  # color sceheme path
+  file="${1}"
+
+  # if there is no input use last theme
+  if [[ -z "$file" ]]; then
+    cat $out
+    exit
+  fi
+
+  # delete output file if it exists
+  [[ -e "$out" ]] && rm $out
+  touch $out
+
+  # check if files exists
+  if [[ ! -e "$file" ]]; then
+    echo "file $file does not exist"
+    exit
+  fi
+
+
+  # set terminal colors
+  for i in {0..15}; do
+    val="$(printf '%x\n' "$i")"
+    color="$(awk -v kk="color$i" '$1 ~ "^.*"kk":$" {print $2}' "$file" | cut -c 2-)"
+    apply $val $color
+  done
+
+  apply_special
+
+  subtheme "$file"
+
+}
+
+apply() {
+  echo -e "\e]P$1$2" | tee -a $out
+}
+
+apply_special() {
+  # set bg
+  apply h "$(awk '$1 ~ "style.cbg" {print $2}' "$file" | cut -c 2-)"
+  # set fg
+  apply g "$(awk '$1 ~ "style.cfg" {print $2}' "$file" | cut -c 2-)"
+  # cursor
+  apply l "$(awk '$1 ~ "style.cursor" {print $2}' "$file" | cut -c 2-)"
+  # cursor text
+  apply m "$(awk '$1 ~ "style.cfg" {print $2}' "$file" | cut -c 2-)"
+  # selection bg
+  apply j "$(awk '$1 ~ "^.*color0:$" {print $2}' "$file" | cut -c 2-)"
+  # selected text
+  apply k "$(awk '$1 ~ "style.cfg" {print $2}' "$file" | cut -c 2-)"
+  echo -e "\ec" | tee -a $out
+}
+
+main "${@}"

@@ -6,17 +6,17 @@
 body {
 	font-family:"peep";
 	font-size: 1.5em;
-	background: linear-gradient(to bottom, var(--color0), var(--color1)) fixed;
+	background: linear-gradient(to bottom, var(--color7), var(--color0)) fixed;
 }
 a:visited{
-	color: var(--color1);
+	color: var(--color4);
 }
 a:link{
 	text-decoration: none;
-	color: var(--color1);
+	color: var(--color4);
 }
 a:hover{
-	color: var(--color2);
+	color: var(--color5);
 }
 ul {
 	list-style-type:none;
@@ -33,7 +33,7 @@ li:first-child{
 }
 h2 {
 	margin-top: 0px;
-	color: var(--color2);
+	color: var(--color6);
 }
 h2.notbottom{
 	margin-bottom: 0px;
@@ -45,7 +45,7 @@ h2.notbottom{
 	width: 500px;
 	height: 250px;
 	margin-left: -250px;
-	border: 1px solid var(--color2);
+	border: 1px solid var(--color6);
 	border-radius: 5px;
 }
 #bar{
@@ -55,7 +55,7 @@ h2.notbottom{
 	width: 500px;
 	height: 55px;
 	margin-left: -250px;
-	border: 1px solid var(--color1);
+	border: 1px solid var(--color5);
 	border-radius: 30px;
 }
 input[type=text]{
@@ -64,7 +64,7 @@ input[type=text]{
 	border: none;
 	width: 98%;
 	font-size: 1.5em;
-	color: var(--color1);
+	color: var(--color4);
 	background: none;
 	text-align: center;
 }

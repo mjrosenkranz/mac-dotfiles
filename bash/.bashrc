@@ -22,6 +22,7 @@ alias scripts="cd $HOME/mac-dotfiles/scripts"
 alias q="exit"
 alias ext="cd /Volumes/EMPTY"
 alias yt="youtube-dl -o '%(title)s.%(ext)s' -f mp4"
+alias vivaldirc="cd '/Applications/Vivaldi.app/Contents/Versions/2.4.1488.36/Vivaldi Framework.framework/Versions/A/Resources/vivaldi/style'"
 
 
 #other settings
@@ -30,3 +31,8 @@ export EDITOR=nvim
 shopt -s cdspell
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# use macfeh easier
+function macfeh() {
+    open -b "drabweb.macfeh" "$@"
+}

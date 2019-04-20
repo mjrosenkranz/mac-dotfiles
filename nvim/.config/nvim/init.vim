@@ -20,7 +20,7 @@ set shiftwidth=4
 call plug#begin('~/.local/share/nvim/site/autoload/')
 Plug 'dylanaraps/wal.vim'
 Plug 'lilydjwg/colorizer'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'itchyny/lightline.vim'
 call plug#end()
 
@@ -83,12 +83,3 @@ nnoremap <leader>t :! pdflatex %<cr>
 vmap <leader>c :!xclip -f -sel clip<cr>
 map <leader>v i: !xclip -o -sel clip<cr><Esc>
 
-" coc complete next
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" use return to confirm complete
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# args are: input file, output file
+
+# tests if there are exactly two files
+# [[ "$#" -ne 2 ]] && exit
+
+# target and input files
+trg1="${2}"
+trg2="${3}"
+# trg1="$HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/fromx/fromx.sublime-theme"
+# trg2="$HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/fromx/fromx.sublime-color-scheme"
+
+infile="${1}"
+
+# list of things to replace
+keys="cfg cbg accent \
+			font1 cursor text \
+			color0 color8 \
+			color1 color9 \
+			color2 color10 \
+			color3 color11 \
+			color4 color12 \
+			color5 color13 \
+			color6 color14 \
+			color7 color15"
+
+# get the value associated with the key
+for k in $keys; do
+	# new color value
+	n="$(awk -v kk="$k" '$1 ~ "^.*"kk":$" {print $2}' $infile)"
+	# replace value with new value
+	sed -i  "" "s/\"$k\":.*/\"$k\":  \"$n\",/" "${trg1}"
+	sed -i  "" "s/\"$k\":.*/\"$k\":  \"$n\",/" "${trg2}"
+done

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/Users/morgan/Pictures/Bgs/sayagata.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#c8c8c8",
+        "foreground": "#267358",
+        "cursor": "#bf6c40"
+    },
+    "colors": {
+				"color0":       "#c8c8c8",
+				"color8":       "#e3e3e3",
+				"color1":       "#cc8a66",
+				"color9":       "#bf6c40",
+				"color2":       "#32997a",
+				"color10":      "#267358",
+				"color3":       "#e9d15a",
+				"color11":      "#e9d67a",
+				"color4":       "#336899",
+				"color12":      "#244a6d",
+				"color5":       "#b67cdd",
+				"color13":      "#9c80ae",
+				"color6":       "#339999",
+				"color14":      "#65a1a1",
+				"color7":       "#7f7f7f",
+				"color15":      "#595959"
+    }
+}

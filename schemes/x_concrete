@@ -1,0 +1,43 @@
+! special
+*.foreground:   #267358
+*.background:   #c8c8c8
+*.cursorColor:  #bf6c40
+
+style.accent:		#32997a
+style.text:			#336899
+style.font1:		haxorville
+style.cursor:		#bf6c40
+style.cfg:	   #267358
+style.cbg:   #c8c8c8
+
+! black
+*.color0:       #c8c8c8
+*.color8:       #e3e3e3
+
+! red
+*.color1:       #cc8a66
+*.color9:       #bf6c40
+
+! green
+*.color2:       #32997a
+*.color10:      #267358
+
+! yellow
+*.color3:       #e9d15a
+*.color11:      #e9d67a
+
+! blue
+*.color4:       #336899
+*.color12:      #244a6d
+
+! magenta
+*.color5:       #b67cdd
+*.color13:      #9c80ae
+
+! cyan
+*.color6:       #339999
+*.color14:      #65a1a1
+
+! white
+*.color7:       #7f7f7f
+*.color15:      #595959
