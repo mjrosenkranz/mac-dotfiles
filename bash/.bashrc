@@ -1,9 +1,10 @@
+source /etc/bashrc
 c1="$(tput setaf 5)"
 c2="$(tput setaf 6)"
 c3="$(tput setaf 2)"
 
-
-export PS1=$(echo -e "$c1\u@\h $c3\w\n$c4\ufb0c $c2")
+pro="$(echo -e "\ufb0c")"
+export PS1="\[$c1\]\u@\h \[$c3\]\w\n\[$c4$pro\] \[$c2\]"
 
 export PATH="/usr/local/bin:/Users/morgan/mac-dotfiles/scripts/:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
@@ -12,6 +13,8 @@ export MANPATH=/opt/local/share/man:$MANPATH
 export PATH=/opt/pkg/bin:/opt/pkg/sbin:${PATH}
 export PATH=$HOME/.cargo/bin:${PATH}
 export PATH="$PATH:$HOME/data/pkgbuild/scripts"
+export PATH=/Library/TeX/texbin:${PATH}
+
 
 # aliases
 alias sourceb="source $HOME/.bashrc"
