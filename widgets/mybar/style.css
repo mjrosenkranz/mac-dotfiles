@@ -6,8 +6,6 @@
 /*variables*/
 :root {
 	font-family:"peep";
-	--tc: var(--color7);
-	--bgc: var(--color0);
 	/* --elshadow: 0px 4px 10px 4px rgba(0,0,0,0.15); */
 	--elshadow: none;
 	--br: 5px;
@@ -19,7 +17,7 @@
 	height: 30px;
 	margin-top: 20px;
 	margin-left: 1.5vw;
-	background-color: var(--bgc);
+	background-color: var(--background);
 	background-color: none;
 	 box-shadow: 0px 3px 3px 3px rgba(0,0,0,0.15);
 	border-radius: var(--br);
@@ -31,33 +29,33 @@ p {
 }
 p.c {
 	margin: 6px 1vw 0px;
-	color: var(--tc);
+	color: var(--text);
 }
 p.r {
 	display: inline-block;
 	margin: 6px 17px 0px;
 	margin-left: 0px;
-	color: var(--tc);
+	color: var(--text);
 }
 p.mr {
 	display: inline-block;
 	margin: 6px 0.7vw 0px;
 	margin-left: 0px;
 	margin-right: 0px;
-	color: var(--tc);
+	color: var(--text);
 }
 p.rl {
 	display: inline-block;
 	margin: 6px 1vw 0px;
 	margin-right: 0px;
-	color: var(--tc);
+	color: var(--text);
 	text-align: center;
 }
 p.l {
 	display: inline-block;
 	margin: 6px 0vw 0px;
 	margin-right: 0px;
-	color: var(--tc);
+	color: var(--text);
 }
 #c{
 	display: inline-block;
@@ -125,5 +123,5 @@ i{
 	margin-bottom: 0px;
 	margin-right: 0px;
 	font-size: 1em;
-	color: var(--tc);
+	color: var(--text);
 }

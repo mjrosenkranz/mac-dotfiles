@@ -1,0 +1,113 @@
+{
+	"variables":
+	{
+        "color0":  "#282a2e",
+        "color8":  "#373b41",
+        "color1":  "#a54242",
+        "color9":  "#cc6666",
+        "color2":  "#8c9440",
+        "color10":  "#b5bd68",
+        "color3":  "#de935f",
+        "color11":  "#f0c674",
+        "color4":  "#5f819d",
+        "color12":  "#81a2be",
+        "color5":  "#85678f",
+        "color13":  "#b294bb",
+        "color6":  "#5e8d87",
+        "color14":  "#8abeb7",
+        "color7":  "#707880",
+        "color15":  "#c5c8c6",
+        "background":  "#1d1f21",
+        "foreground":  "#c5c8c6",
+        "cursor":  "",
+    },
+    "globals":
+    {
+        "foreground":  "#c5c8c6",
+        "background":  "#1d1f21",
+
+        "caret": "var(cursor)",
+        "block_caret": "var(cursor)",
+
+        "selection": "color(var(color8) alpha(0.63))",
+        "selection_border": "var(cursor)",
+        "invisibles": "var(color15)",
+
+        "gutter": "var(color0)",
+        "gutter_foreground": "var(foreground)",
+        "line_highlight": "color(var(background) alpha(0.33))",
+
+        "brackets_options": "foreground underline bold",
+
+    },
+    "rules":
+    [
+        
+        // comment
+        {
+            "name": "Comment",
+            "scope": "comment",
+            "foreground":  "#c5c8c6",
+        },
+
+        // entity.name
+        // entity.other.inherited-class
+        // entity.name.section
+        // entity.other.attribute-name
+        {
+            "name": "Entity",
+            "scope": "entity.name, entity.other.inherited-class, entity.name.section, entity.other.attribute-name",
+            "foreground":  "#c5c8c6",
+        },
+
+
+        // string
+        // variable 
+        // variable.language
+        // variable.parameter
+        // entity.name.constant
+        // entity.name.tag
+        {
+            "name": "Variable",
+            "scope": "variable, variable.language, variable.parameter, entity.name.tag, entity.name.constant, string, punctuation.definition.variable",
+            "foreground":  "#c5c8c6",
+        },
+
+
+        // constant.language
+        // storage.modifier
+        // storage.type
+        // support.type
+        // support.class
+        // keyword.control
+        // keyword
+        // keyword.operator
+        // storage.type
+        // punctuation.definition.variable
+        // variable.function
+        // constant.character.escape
+        {
+            "name": "Type",
+            "scope": " variable.function, constant.language, storage.modifier, storage.type, support.type, support.class, keyword, storage.type, constant.character.escape",
+            "foreground":  "#c5c8c6",
+        },
+
+        // constant.numeric
+        // constant
+        {
+            "name": "Constant",
+            "scope": "constant.numeric, constant",
+            "foreground":  "#c5c8c6",
+        },
+
+        // invalid
+        // invalid.deprecated
+        {
+            "name": "Invalid",
+            "scope": "invalid, invalid.deprecated",
+            "foreground":  "#c5c8c6",
+        },
+
+
+    ]
+}
