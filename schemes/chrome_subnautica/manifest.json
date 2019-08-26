@@ -1,0 +1,21 @@
+{
+  "version": "2.0",
+  "name": "subnautica",
+  "manifest_version": 2,
+  "theme": {
+    "colors" : {
+      "frame" : [57, 73, 97],
+      "tab_text" : [240, 198, 117],
+      "tab_background_text" : [182, 185, 187],
+      "toolbar" : [38, 44, 52],
+      "ntp_section" : [0, 100, 0],
+      "button_background" : [255, 255, 255]
+    },
+    "tints" : {
+      "buttons" : [1.0,0.84,0.0]
+    },
+    "properties" : {
+      "ntp_background_alignment" : "bottom"
+    }
+  }
+}

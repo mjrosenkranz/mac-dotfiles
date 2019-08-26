@@ -5,7 +5,7 @@
 "  \/_/ \/_/   \/_/      \/_/   \/_/  \/_/   \/_/ /_/   \/_____/
 "
 " general settings
-syntax on
+syntax enable
 set noswapfile
 set clipboard=unnamed
 set mouse=a
@@ -22,59 +22,124 @@ call plug#begin('~/.local/share/nvim/site/autoload/')
 Plug 'dylanaraps/wal.vim'
 Plug 'lilydjwg/colorizer'
 "Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 call plug#end()
 
 " use wal for colorshceme
 colorscheme wal
 
-let s:black = [ '', 232 ]
-let s:gray = [ '', 8 ]
-let s:white = [ '', 0 ]
-let s:darkblue = [ '', 4 ]
-let s:cyan = [ '', 6 ]
-let s:green = [ '', 2 ]
-let s:purple = [ '', 5 ]
-let s:red = [ '', 1 ]
-let s:yellow = [ '', 3 ]
+" let s:black = [ '', 232 ]
+" let s:gray = [ '', 8 ]
+" let s:white = [ '', 0 ]
+" let s:darkblue = [ '', 4 ]
+" let s:cyan = [ '', 6 ]
+" let s:green = [ '', 2 ]
+" let s:purple = [ '', 5 ]
+" let s:red = [ '', 1 ]
+" let s:yellow = [ '', 3 ]
+" 
+" let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+" let s:p.normal.left = [ [ s:gray, s:cyan ], [ s:black, s:yellow ] ]
+" let s:p.normal.right = [ [ s:gray, s:cyan ], [ s:black, s:yellow ] ]
+" let s:p.normal.middle = [ [ s:gray, s:cyan ] ]
+" let s:p.normal.error = [ [ s:red, s:black ] ]
+" let s:p.normal.warning = [ [ s:yellow, s:black ] ]
+" 
+" let s:p.insert.left = [ [ s:black, s:green ], [ s:black, s:yellow ] ]
+" let s:p.insert.middle = [ [ s:black, s:green ] ]
+" let s:p.insert.right = [ [ s:black, s:green ], [ s:black, s:yellow ] ]
+" 
+" let s:p.visual.left = [ [ s:black, s:purple ], [ s:black, s:yellow ] ]
+" let s:p.visual.middle = [ [ s:black, s:purple ] ]
+" let s:p.visual.right = [ [ s:black, s:purple ], [ s:black, s:yellow ] ]
+" 
+" let s:p.inactive.middle = [ [ s:white, s:gray ] ]
+" let s:p.inactive.right = [ [ s:white, s:gray ], [ s:black, s:yellow ] ]
+" let s:p.inactive.left =  [ [ s:white, s:gray ], [ s:black, s:yellow ] ]
+" 
+" let s:p.replace.left = [ [ s:black, s:red ], [ s:cyan, s:gray ] ]
+" 
+" " nonactive
+" let s:p.tabline.left = [ [ s:white, s:darkblue ] ]
+" " selected
+" let s:p.tabline.tabsel = [ [ s:black, s:purple ] ]
+" " whitespace
+" let s:p.tabline.middle = [ [ s:black, s:darkblue ] ]
+" " right side
+" let s:p.tabline.right = [ [ s:white, s:purple ] ]
+" 
+" let g:lightline#colorscheme#term#palette = lightline#colorscheme#flatten(s:p)
+" 
+" " statusline
+" let g:lightline = {
+" 			\ 'colorscheme': 'term',
+" 			\ 'separator': { 'left': '▊▓▒░', 'right': '▎▍▌▋▊' },
+"       \ }
 
-let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-let s:p.normal.left = [ [ s:gray, s:cyan ], [ s:black, s:yellow ] ]
-let s:p.normal.right = [ [ s:gray, s:cyan ], [ s:black, s:yellow ] ]
-let s:p.normal.middle = [ [ s:gray, s:cyan ] ]
-let s:p.normal.error = [ [ s:red, s:black ] ]
-let s:p.normal.warning = [ [ s:yellow, s:black ] ]
+set laststatus=2
 
-let s:p.insert.left = [ [ s:black, s:green ], [ s:black, s:yellow ] ]
-let s:p.insert.middle = [ [ s:black, s:green ] ]
-let s:p.insert.right = [ [ s:black, s:green ], [ s:black, s:yellow ] ]
+function! RedrawMode(mode)
+	if a:mode == 'n'
+		" normal
+		hi Mode ctermfg=3 ctermbg=7 cterm=NONE
+	elseif a:mode == 'i'
+		" insert
+		hi Mode ctermbg=7 ctermfg=1 cterm=NONE
+	elseif a:mode == 'v'
+		" visual
+		hi Mode ctermfg=2 ctermbg=7 cterm=NONE
+	else
+		" other
+	endif
 
-let s:p.visual.left = [ [ s:black, s:purple ], [ s:black, s:yellow ] ]
-let s:p.visual.middle = [ [ s:black, s:purple ] ]
-let s:p.visual.right = [ [ s:black, s:purple ], [ s:black, s:yellow ] ]
+	return ''
+endfunction
 
-let s:p.inactive.middle = [ [ s:white, s:gray ] ]
-let s:p.inactive.right = [ [ s:white, s:gray ], [ s:black, s:yellow ] ]
-let s:p.inactive.left =  [ [ s:white, s:gray ], [ s:black, s:yellow ] ]
+function! GetFileType(filetype)
+	if a:filetype == ''
+		return "none"
+	else
+		return a:filetype
+	endif
+endfunction
 
-let s:p.replace.left = [ [ s:black, s:red ], [ s:cyan, s:gray ] ]
+hi Accent ctermfg=15 cterm=NONE ctermbg=NONE
+hi StatusLine ctermfg=0 ctermbg=15 cterm=NONE
+hi ModeAccent ctermfg=7 ctermbg=NONE cterm=NONE
 
-" nonactive
-let s:p.tabline.left = [ [ s:white, s:darkblue ] ]
-" selected
-let s:p.tabline.tabsel = [ [ s:black, s:purple ] ]
-" whitespace
-let s:p.tabline.middle = [ [ s:black, s:darkblue ] ]
+" calls resraws the colors every time the mode changes
+set statusline=%{RedrawMode(mode())}
+" mode
+set statusline+=%#ModeAccent#
+set statusline+=%#Mode#◼
+" filename
+set statusline+=\ %#StatusLine#\ %f
+"modified
+set statusline+=%#StatusLine#%m
+set statusline+=%#Accent#
+
 " right side
-let s:p.tabline.right = [ [ s:white, s:purple ] ]
+set statusline+=%#Neutral#
+set statusline+=%=
 
-let g:lightline#colorscheme#term#palette = lightline#colorscheme#flatten(s:p)
+" file type
+set statusline+=%#Accent#
+set statusline+=%#StatusLine#%{GetFileType(&filetype)}
+set statusline+=\ 
+" format
+set statusline+=%#StatusLine#%{&ff}
+set statusline+=%#Accent#
+set statusline+=\ 
 
-" statusline
-let g:lightline = {
-			\ 'colorscheme': 'term',
-			\ 'separator': { 'left': '▊▋▌▍▎', 'right': '▎▍▌▋▊' },
-      \ }
+" line and col
+set statusline+=%#Accent#
+set statusline+=%#StatusLine#%l:%c
+set statusline+=\ 
+" percent thru
+set statusline+=%#StatusLine#%p%%
+set statusline+=%#Accent#
+
+hi Neutral ctermfg=NONE ctermbg=NONE cterm=NONE
 
 "keybindings
 let mapleader = ","

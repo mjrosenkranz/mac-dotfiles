@@ -1,0 +1,32 @@
+# vi mode
+bindkey -v
+zle -N zle-line-init
+zle -N zle-keymap-select
+# no esc lag
+export KEYTIMEOUT=1
+
+function zle-line-init zle-keymap-select {
+	if [ $KEYMAP = "vicmd" ]; then
+		echo -ne '\033[2 q'
+	else
+		echo -ne '\033[6 q'
+	fi
+}
+
+
+PS1='%B%F{6}[%F{4}%~%F{6}]%b
+%F{green}>_ %F{reset}'
+
+# aliases
+alias zshrc="nvim $HOME/.zshrc"
+alias sourcez="source $HOME/.zshrc"
+alias vimrc="nvim $HOME/.config/nvim/init.vim"
+
+# path
+PATH=$PATH:/usr/local/bin/
+PATH=$PATH:$HOME/mac-dotfiles/scripts/
+
+# autocomplete
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu select

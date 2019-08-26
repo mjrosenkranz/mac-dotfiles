@@ -1,12 +1,11 @@
 source /etc/bashrc
-c1="$(tput setaf 5)"
-c2="$(tput setaf 6)"
-c3="$(tput setaf 2)"
+c2="$(tput setaf 2)"
+c4="$(tput setaf 14)"
 
 pro="$(echo -e "\ufb0c")"
-export PS1="\[$c1\]\u@\h \[$c3\]\w\n\[$c4$pro\] \[$c2\]"
+export PS1="\[$c4\][\w]\n\[$c2\]>_ \[\$(tput sgr0)\]"
 
-export PATH="/usr/local/bin:/Users/morgan/mac-dotfiles/scripts/:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/bin:/Users/morgan/mac-dotfiles/scripts/:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH="$PATH:/usr/local/bin/python3"
 export MANPATH=/opt/local/share/man:$MANPATH
@@ -26,6 +25,7 @@ alias q="exit"
 alias ext="cd /Volumes/EMPTY"
 alias yt="youtube-dl -o '%(title)s.%(ext)s' -f mp4"
 alias vivaldirc="cd '/Applications/Vivaldi.app/Contents/Versions/2.4.1488.36/Vivaldi Framework.framework/Versions/A/Resources/vivaldi/style'"
+alias ls="ls -G"
 
 
 #other settings
@@ -39,3 +39,6 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 function macfeh() {
     open -b "drabweb.macfeh" "$@"
 }
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
