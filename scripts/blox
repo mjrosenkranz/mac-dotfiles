@@ -1,0 +1,11 @@
+#!/bin/zsh
+norm=""
+bold=""
+for i in {0..7}; do
+	norm+=$(printf "%%F{%d}\u2588\u2588%%f " $i)
+	bold+=$(printf "%%F{%d}\u2588\u2588%%f " $(( $i + 8)) )
+done
+
+#printf "\n%s\n%s\n"
+echo "${(%%)norm}"
+echo "${(%%)bold}"
