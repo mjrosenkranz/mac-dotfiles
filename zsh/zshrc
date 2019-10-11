@@ -30,3 +30,12 @@ PATH=$PATH:$HOME/mac-dotfiles/scripts/
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu select
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+setopt auto_cd
+setopt no_case_glob
+
+setopt inc_append_history
+setopt share_history
+SAVEHIST=100
+HISTFILE=~/.zsh_history
